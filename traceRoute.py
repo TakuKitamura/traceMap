@@ -1,7 +1,6 @@
 # 1.160.23.145
 import subprocess as sp
 import shlex
-import re
 import urllib.request
 import urllib.parse
 import json
@@ -50,8 +49,8 @@ if exitStatus == 0:
     addressList.reverse()
     print(addressList)
 
-    m = folium.Map(location=[34.981899, 135.963612])
-    folium.Marker([34.981899, 135.963612], popup='Here').add_to(m)
+    here = {'lat': 34.981899, 'lng': 135.963612}
+    m = folium.Map(location=[here['lat'], here['lng']], tiles='mapboxcontrolroom')
 
     locationList = []
     for address in addressList:
@@ -70,17 +69,36 @@ if exitStatus == 0:
         else:
             print('{0}のジオエンコーディングに失敗しました。'.formta(obj))
 
-    locationList.append({'lat': 34.981899, 'lng': 135.963612})
+    locationList.append(here)
+
+    tempList = []
+    for location in locationList:
+        if location not in tempList:
+            tempList.append(location)
+
+    print(tempList)
+    locationList = tempList
+
+    # addressList = sorted(set(addressList), key=addressList.index)
+
+    print(locationList)
 
     for i in range(0, len(locationList)):
-        folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=str(i)).add_to(m)
+
+        if i == 0:
+            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=str(i), icon=folium.Icon(color='red', icon='fa-exclamation-triangle', prefix='fa')).add_to(m)
+
+        elif i == len(locationList) - 1:
+            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=str(i), icon=folium.Icon(color='blue', icon='home', prefix='fa')).add_to(m)
+
+        else:
+            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=str(i), icon=folium.Icon(color='green', icon='wifi', prefix='fa')).add_to(m)
 
         if i + 1 < len(locationList):
             p1 = [locationList[i]['lat'], locationList[i]['lng']]
             p2 = [locationList[i + 1]['lat'], locationList[i + 1]['lng']]
 
-
-            folium.PolyLine(locations=[p1, p2], color='blue', weight=5.5).add_to(m)
+            folium.PolyLine(locations=[p1, p2], color='red', weight=5).add_to(m)
 
 
     print(locationList)
