@@ -5,10 +5,14 @@ import urllib.request
 import urllib.parse
 import json
 import folium
+import re
 
 
 # シェルインジェクション防止
-remoteAddr = shlex.quote("www.mygov.go.ke")
+
+targetHost = "www.egypt.gov.eg"
+
+remoteAddr = shlex.quote(targetHost)
 
 traceLogPath = "/tmp/traceLog"
 
@@ -60,12 +64,22 @@ if exitStatus == 0:
         response = urllib.request.urlopen(googleAPIURL).read().decode('utf8')
         obj = json.loads(response)
 
+        while obj['status'] == 'ZERO_RESULTS':
+            address =  re.sub(r'.*%20', '', address, 1)
+            googleAPIURL = "https://maps.googleapis.com/maps/api/geocode/json?address={0}&key=AIzaSyBrIg9eLceXYlnV26dXfB_5fB5Ng84l3k0".format(address)
+            response = urllib.request.urlopen(googleAPIURL).read().decode('utf8')
+            obj = json.loads(response)
+
         if obj['status'] == 'OK':
             locationList.append({'lat': float(obj['results'][0]['geometry']['location']['lat']), 'lng': float(obj['results'][0]['geometry']['location']['lng'])})
-            # folium.Marker([location['lat'], location['lng']], popup='Mt. Hood Meadows').add_to(m)
-            # print(location)
         elif obj['status'] == 'ZERO_RESULTS':
-            ipinfoURL = "https://ipinfo.io/{0}".format()
+
+
+            print(address + 'は見つかりませんでした。')
+            # print(address)
+            # ipinfoURL = "https://ipinfo.io/{0}".format()
+            # response = urllib.request.urlopen(ipinfoURL).read().decode('utf8')
+            # obj = json.loads(response)
         else:
             print('{0}のジオエンコーディングに失敗しました。'.formta(obj))
 
@@ -76,31 +90,23 @@ if exitStatus == 0:
         if location not in tempList:
             tempList.append(location)
 
-    print(tempList)
     locationList = tempList
-
-    # addressList = sorted(set(addressList), key=addressList.index)
-
-    print(locationList)
 
     for i in range(0, len(locationList)):
 
         if i == 0:
-            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=str(i), icon=folium.Icon(color='red', icon='fa-exclamation-triangle', prefix='fa')).add_to(m)
+            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=targetHost, icon=folium.Icon(color='red', icon='fa-exclamation-triangle', prefix='fa')).add_to(m)
 
         elif i == len(locationList) - 1:
-            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=str(i), icon=folium.Icon(color='blue', icon='home', prefix='fa')).add_to(m)
+            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=targetHost, icon=folium.Icon(color='blue', icon='home', prefix='fa')).add_to(m)
 
         else:
-            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=str(i), icon=folium.Icon(color='green', icon='wifi', prefix='fa')).add_to(m)
+            folium.Marker([locationList[i]['lat'], locationList[i]['lng']], popup=targetHost, icon=folium.Icon(color='green', icon='wifi', prefix='fa')).add_to(m)
 
         if i + 1 < len(locationList):
             p1 = [locationList[i]['lat'], locationList[i]['lng']]
             p2 = [locationList[i + 1]['lat'], locationList[i + 1]['lng']]
 
             folium.PolyLine(locations=[p1, p2], color='red', weight=5).add_to(m)
-
-
-    print(locationList)
 
     m.save('/Users/kitamurataku/work/traceMap/test.html')

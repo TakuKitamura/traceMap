@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_15b3a1af4c414faea7c35a4c14d462cf {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_15b3a1af4c414faea7c35a4c14d462cf" ></div>
+        
+</body>
+<script>    
+    
+
+            
+                var bounds = null;
+            
+
+            var map_15b3a1af4c414faea7c35a4c14d462cf = L.map(
+                                  'map_15b3a1af4c414faea7c35a4c14d462cf',
+                                  {center: [34.981899,135.963612],
+                                  zoom: 10,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_35ff34cc2b104418aa5b02f71f1c8130 = L.tileLayer(
+                'https://{s}.tiles.mapbox.com/v3/mapbox.control-room/{z}/{x}/{y}.png',
+                {
+  "attribution": null,
+  "detectRetina": false,
+  "maxZoom": 18,
+  "minZoom": 1,
+  "noWrap": false,
+  "subdomains": "abc"
+}
+                ).addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+        
+    
+
+            var marker_f043488f59e94b9a8989972914a6f904 = L.marker(
+                [38.9567242,-77.3623212],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+            
+    
+
+                var icon_47ecd84b0ac148f39899bcc448a95837 = L.AwesomeMarkers.icon({
+                    icon: 'fa-exclamation-triangle',
+                    iconColor: 'white',
+                    markerColor: 'red',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_f043488f59e94b9a8989972914a6f904.setIcon(icon_47ecd84b0ac148f39899bcc448a95837);
+            
+    
+            var popup_6085c6ac4e9844e499a5b042964971a1 = L.popup({maxWidth: '300'});
+
+            
+                var html_1c50ccdd03534d9799d85548546b0a9b = $('<div id="html_1c50ccdd03534d9799d85548546b0a9b" style="width: 100.0%; height: 100.0%;">www.government.is</div>')[0];
+                popup_6085c6ac4e9844e499a5b042964971a1.setContent(html_1c50ccdd03534d9799d85548546b0a9b);
+            
+
+            marker_f043488f59e94b9a8989972914a6f904.bindPopup(popup_6085c6ac4e9844e499a5b042964971a1);
+
+            
+        
+    
+                var poly_line_f0d69ebda5a4413993a4fc0b2bf24495 = L.polyline(
+                    [[38.9567242, -77.3623212], [35.6906036, 139.7695998]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 5
+}).addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+            
+    
+
+            var marker_62daa7001331467b8905dfe4ae26a407 = L.marker(
+                [35.6906036,139.7695998],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+            
+    
+
+                var icon_2450d087eb1c410699501b3ddb9b4587 = L.AwesomeMarkers.icon({
+                    icon: 'wifi',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_62daa7001331467b8905dfe4ae26a407.setIcon(icon_2450d087eb1c410699501b3ddb9b4587);
+            
+    
+            var popup_9eb94a73623f4c66b3a8cae72cc06c8a = L.popup({maxWidth: '300'});
+
+            
+                var html_7bd78ad67ebd41d0b055d3ad6bf8fd1e = $('<div id="html_7bd78ad67ebd41d0b055d3ad6bf8fd1e" style="width: 100.0%; height: 100.0%;">www.government.is</div>')[0];
+                popup_9eb94a73623f4c66b3a8cae72cc06c8a.setContent(html_7bd78ad67ebd41d0b055d3ad6bf8fd1e);
+            
+
+            marker_62daa7001331467b8905dfe4ae26a407.bindPopup(popup_9eb94a73623f4c66b3a8cae72cc06c8a);
+
+            
+        
+    
+                var poly_line_e58570744b904c73a649da303a62e093 = L.polyline(
+                    [[35.6906036, 139.7695998], [35.6989512, 139.7534873]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 5
+}).addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+            
+    
+
+            var marker_94087d07cdae4b42bc94add5fce2f017 = L.marker(
+                [35.6989512,139.7534873],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+            
+    
+
+                var icon_a603d86f5196486595d8cd280ef1a5e3 = L.AwesomeMarkers.icon({
+                    icon: 'wifi',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_94087d07cdae4b42bc94add5fce2f017.setIcon(icon_a603d86f5196486595d8cd280ef1a5e3);
+            
+    
+            var popup_573dd8ef19d24f1f906a096ca90c0890 = L.popup({maxWidth: '300'});
+
+            
+                var html_16b370e20c7042a9880c2ec7c504799b = $('<div id="html_16b370e20c7042a9880c2ec7c504799b" style="width: 100.0%; height: 100.0%;">www.government.is</div>')[0];
+                popup_573dd8ef19d24f1f906a096ca90c0890.setContent(html_16b370e20c7042a9880c2ec7c504799b);
+            
+
+            marker_94087d07cdae4b42bc94add5fce2f017.bindPopup(popup_573dd8ef19d24f1f906a096ca90c0890);
+
+            
+        
+    
+                var poly_line_eb194bee5b5e4eef906741aa3557139a = L.polyline(
+                    [[35.6989512, 139.7534873], [34.981899, 135.963612]],
+                    {
+  "bubblingMouseEvents": true,
+  "color": "red",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 5
+}).addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+            
+    
+
+            var marker_d2d6f739c1d14d5c837df02c31434a51 = L.marker(
+                [34.981899,135.963612],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_15b3a1af4c414faea7c35a4c14d462cf);
+            
+    
+
+                var icon_0da9e70f87c4451192c62e4ec0b35fb6 = L.AwesomeMarkers.icon({
+                    icon: 'home',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_d2d6f739c1d14d5c837df02c31434a51.setIcon(icon_0da9e70f87c4451192c62e4ec0b35fb6);
+            
+    
+            var popup_e37f734dc7ba4bdc894eb5c8de84a474 = L.popup({maxWidth: '300'});
+
+            
+                var html_0aefaabefa0545d5b0119616ab508c28 = $('<div id="html_0aefaabefa0545d5b0119616ab508c28" style="width: 100.0%; height: 100.0%;">www.government.is</div>')[0];
+                popup_e37f734dc7ba4bdc894eb5c8de84a474.setContent(html_0aefaabefa0545d5b0119616ab508c28);
+            
+
+            marker_d2d6f739c1d14d5c837df02c31434a51.bindPopup(popup_e37f734dc7ba4bdc894eb5c8de84a474);
+
+            
+        
+</script>
